@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 20px;
+            background: #eef1f5;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .product {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        button {
+            padding: 6px 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .remove {
+            background: red;
+            color: white;
+        }
+
+        .qty-btn {
+            background: #333;
+            color: white;
+        }
+
+        #total-price {
+            text-align: center;
+            font-size: 22px;
+            margin-top: 20px;
+        }
+
+        .top-btns {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .top-btns button {
+            background: #444;
+            color: white;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            text-decoration: none;
+            color: blue;
+        }
+
+        .checkout-btn {
+            background: green;
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<h1>🛒 My Cart</h1>
+
+<div id="cart-items"></div>
+
+<h2 id="total-price">Total: ₹0</h2>
+
+<div class="top-btns">
+    <button onclick="clearCart()">Clear Cart</button>
+    <button class="checkout-btn" onclick="goToCheckout()">Proceed to Checkout</button>
+</div>
+
+<a href="products.html">⬅ Back to Products</a>
+
+<script>
+
+let container = document.getElementById("cart-items");
+
+function getCart() {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+function saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function renderCart() {
+
+    let cart = getCart();
+    container.innerHTML = "";
+    let total = 0;
+
+    cart.forEach((item, index) => {
+
+        let price = Number(item.price) || 0;
+        let qty = Number(item.qty) || 1;
+
+        total += price * qty;
+
+        container.innerHTML += `
+            <div class="product">
+                <h3>${item.name}</h3>
+
+                <p>Price: ₹${price}</p>
+
+                <p>
+                    Quantity:
+                    <button class="qty-btn" onclick="decreaseQty(${index})">-</button>
+                    ${qty}
+                    <button class="qty-btn" onclick="increaseQty(${index})">+</button>
+                </p>
+
+                <p><b>Total:</b> ₹${price * qty}</p>
+
+                <button class="remove" onclick="removeItem(${index})">
+                    Remove
+                </button>
+            </div>
+        `;
+    });
+
+    document.getElementById("total-price").innerText =
+        "Total: ₹" + total;
+
+    if (cart.length === 0) {
+        container.innerHTML = "<h3 style='text-align:center;'>Cart is empty 🛒</h3>";
+        document.getElementById("total-price").innerText = "Total: ₹0";
+    }
+}
+
+function increaseQty(index) {
+    let cart = getCart();
+    cart[index].qty = (cart[index].qty || 1) + 1;
+    saveCart(cart);
+    renderCart();
+}
+
+function decreaseQty(index) {
+    let cart = getCart();
+    cart[index].qty = (cart[index].qty || 1) - 1;
+
+    if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+    }
+
+    saveCart(cart);
+    renderCart();
+}
+
+function removeItem(index) {
+    let cart = getCart();
+    cart.splice(index, 1);
+    saveCart(cart);
+    renderCart();
+}
+
+function clearCart() {
+    localStorage.removeItem("cart");
+    renderCart();
+}
+
+// 🚀 CHECKOUT FUNCTION
+function goToCheckout() {
+    let cart = getCart();
+
+    if (cart.length === 0) {
+        alert("Cart is empty!");
+        return;
+    }
+
+    window.location.href = "checkout.html";
+}
+
+renderCart();
+
+</script>
+
+</body>
+</html>

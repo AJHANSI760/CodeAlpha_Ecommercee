@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MY STORE - Home</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #f4f6f9;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(to right, #ffffff, #e9eef5);
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: #555;
+            font-size: 18px;
+        }
+
+        .btn {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        .shop-btn {
+            background: black;
+            color: white;
+        }
+
+        .cart-btn {
+            background: #333;
+            color: white;
+        }
+
+        /* FEATURES */
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 40px;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            width: 220px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        /* PRODUCT PREVIEW */
+        .preview {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .preview h2 {
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            margin-top: 40px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">🛍️ MY STORE</div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Enjoy Shopping!</h1>
+    <p>Best place to find your favorite products at best price!!</p>
+
+    <a href="products.html">
+        <button class="btn shop-btn">Cick here to have fun</button>
+    </a>
+
+    <a href="cart.html">
+        <button class="btn cart-btn">View Cart 🛒</button>
+    </a>
+</div>
+
+<!-- FEATURES -->
+<div class="features">
+
+    <div class="box">
+        <h3>⚡ Fast</h3>
+        <p>Instant cart updates</p>
+    </div>
+
+    <div class="box">
+        <h3>🛍️ Easy</h3>
+        <p>Simple shopping flow</p>
+    </div>
+
+    <div class="box">
+        <h3>💾 Stored</h3>
+        <p>Uses localStorage</p>
+    </div>
+
+</div>
+
+<!-- PRODUCT PREVIEW -->
+<div class="preview">
+    <h2>🔥 Featured Products</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=600&q=80">
+            <p>Shirt - ₹500</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=600&q=80">
+            <p>Shoes - ₹1200</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80">
+            <p>Watch - ₹2000</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    © 2026 MY STORE | Built with HTML, CSS & JS
+</div>
+
+</body>
+</html>

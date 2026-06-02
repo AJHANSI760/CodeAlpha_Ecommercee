@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Register</h1>
+
+<input type="text" id="name" placeholder="Name"><br>
+
+<input type="email" id="email" placeholder="Email"><br>
+
+<input type="password" id="password" placeholder="Password"><br>
+
+<button onclick="register()">Register</button>
+
+<script>
+function register() {
+
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+
+    let user = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value
+    };
+
+    users.push(user);
+
+    localStorage.setItem('users', JSON.stringify(users));
+
+    alert('Registration Successful');
+
+    window.location.href = 'login.html';
+}
+</script>
+
+</body>
+</html>
